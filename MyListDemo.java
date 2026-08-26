@@ -13,9 +13,8 @@ interface MyList {
 	// returns index else -1
 }
 class MyListImpl implements MyList {
-	int[] a = new int[10];
-	int size = 0;
-
+	private int[] a = new int[10];
+	private int size = 0;
 	@Override
 	public void add(int x) {
 		// if array contains some space
@@ -29,10 +28,17 @@ class MyListImpl implements MyList {
 			size++;
 		}
 	}
+
 	@Override
 	public void add(int index, int x) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'add'");
+		// shifting logic
+		if(index > size) throw new IndexOutOfBoundsException();
+		add(0);
+		for(int i = size -2; i>= index; i++)
+		{
+			a[i+1] = a[i];
+		}
+		a[index] = x;
 	}
 
 	@Override
@@ -42,8 +48,14 @@ class MyListImpl implements MyList {
 
 	@Override
 	public void remove(int index) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'remove'");
+		// shifting logic
+		if(index >= size) throw new IndexOutOfBoundsException();
+		for(int i = index; i<size-1; i++)
+		{
+			a[i] = a[i+1];
+		}
+		size--;
+
 	}
 
 	@Override
@@ -56,26 +68,39 @@ class MyListImpl implements MyList {
 
 	@Override
 	public int indexOf(int x) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'indexOf'");
+		// search logic search x in the array and return index
+		return -1;
 	}
 
 	@Override
 	public int lastIndexOf(int x) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'lastIndexOf'");
+		// search logic search x in the array and return index
+		return -1;
 	}
 }
 class MyListDemo {
 	public static void main(String[] args) {
+
+		
+
 		MyList list = new MyListImpl();
 		list.add(45);
 		list.add(23);
 		list.add(75);
-		for (int i = 1; i <= 11; i++)
+		for (int i = 1; i <= 110; i++)
 			list.add(i);
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
+			System.out.print(list.get(i) + " ");
+		}
+		System.out.println("which element you want to print enter index");
+		int index = sc.nextInt();
+		try 
+		{
+		list.get(index); // might throw IndexOutOfBoundsException
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
