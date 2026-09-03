@@ -44,7 +44,7 @@ public class CollectionListDemo {
         // overriding equals : DONE
         // print the common elements of both the lists
         // Sort a list using comparator : DONE
-        // Remove all elements from a list that are less than 40
+        // Remove all elements from a list of integer that are less than 40
         // convert a list of customer to an array of objects / array of customer
         // Remove all duplicate elements from a list without changing the order
         // of elements
