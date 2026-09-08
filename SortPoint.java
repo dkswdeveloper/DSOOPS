@@ -22,12 +22,10 @@ import java.util.Scanner;
 */
 class Point {
     int x, y;
-
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
     @Override
     public String toString() {
         return "Point [x=" + x + ", y=" + y + "]";
@@ -35,9 +33,11 @@ class Point {
 }
 public class SortPoint {
     public static void main(String[] args) {
-        // change the class Point so that it implements Comparable<Point> which
+        // change the class Point so that it implements Comparable<Point>
+        // (public int compareTo(Point p) {}) which
         // compares only the x coordinate. If x is small, point is small
         // create a class PointSumComaparator which implements Comparator<Point>
+        // (public int compare(Point p1, Point p2) )
         // it adds x and y for a point, if sum is large, point is large
         // Sample input and output is shown
         Scanner sc = new Scanner(System.in);
@@ -51,6 +51,7 @@ public class SortPoint {
         Collections.sort(list);
         System.out.println(list);
         Comparator<Point> comparator = new PointSumComaparator();
+        // Collections.sort(list,comparator);
         list.sort(comparator);
         System.out.println(list);
     }

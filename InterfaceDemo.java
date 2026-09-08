@@ -9,34 +9,25 @@ interface Picture {
 interface Calc {
     String type = "simple"; // this data is public static and final [SHARED
                             // CONSTANT]
-
     int add(int a, int b);
-
     int multiply(int a, int b);
 }
 class IntCalc implements Calc, Picture {
     int digitsSupported = 12;
-
     public int add(int a, int b) {
         return a + b;
     }
-
     public int multiply(int a, int b) {
         return a * b;
     }
-
     public void show() {
-        System.out.println("Intcals with " + digitsSupported);
-    }
-
-    public String toString() {
-        return "IntCalc object";
+        System.out.println("Picture is shown");
     }
 }
 public class InterfaceDemo {
     public static void main(String[] args) {
         Calc calc; // reference declaration is allowed
-        // calc = new Calc(); // not allowed
+        // calc = new Calc(); // not allowed : can not crete object of interface
         IntCalc obj = new IntCalc();
         calc = obj; // LHS : superclass var = subclass object
         Calc calc2 = new IntCalc();

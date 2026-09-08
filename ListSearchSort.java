@@ -6,18 +6,15 @@ class Customer {
     int custid;
     String name;
     double rating;
-
     public Customer(int custid, String name, double rating) {
         this.custid = custid;
         this.name = name;
         this.rating = rating;
     }
-
     @Override
     public String toString() {
         return "Customer [custid=" + custid + ", name=" + name + ", rating=" + rating + "]";
     }
-
     @Override
     public boolean equals(Object ob) {
         if (!(ob instanceof Customer)) {
@@ -32,10 +29,10 @@ class Customer {
 class CustomerComparatorId implements Comparator<Customer> {
     public int compare(Customer c1, Customer c2) {
         // if c1 > c2 return +ve, c2 > c1 return -ve else return 0
-        // if(c1.custid > c2.custid) return 1;
-        // else if(c1.custid < c2.custid) return -1;
-        // return 0;
-        return c1.custid - c2.custid;
+        if(c1.custid > c2.custid) return 1;
+        else if(c1.custid < c2.custid) return -1;
+        return 0;
+        // return c1.custid - c2.custid;
     }
 }
 class CustomerComparatorName implements Comparator<Customer> {

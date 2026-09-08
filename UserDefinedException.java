@@ -5,10 +5,14 @@ class ShortPasswordException extends Exception {
     }
 }
 public class UserDefinedException {
-    public static void main(String[] args) throws ShortPasswordException {
-        String pwd = "hello";
-        if (pwd.length() < 6) {
-            throw new ShortPasswordException();
+    public static void main(String[] args) // throws ShortPasswordException
+    {    try {
+            String pwd = "hello";
+            if (pwd.length() < 6) {
+                throw new ShortPasswordException();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -14,7 +14,6 @@ public class AccessDemo {
         d.def = 22; // accessible as i am in same package
         d.prot = 33; // accessible as i am in same package
         d.pub = 44; // accessible everywhere
-        Box b = new Box();
         // b.len = 5; // yes public, default, protected ,
 
     }

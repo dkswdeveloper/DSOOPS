@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
+// Read n, read n strings, print all strings that start with 'p'
 public class MaxLenString {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int max = 0;

@@ -1,12 +1,4 @@
-class MyFileProcessor<T> 
-{
-    String file;
-    public MyFileProcessor(String file) { this.file = file;}
-    public T process()
-    {
-        return null;
-    }
-}
+import java.util.Arrays;
 public class GenericDemo {
     public static int search(int a[], int x) {
         for (int i = 0; i < a.length; i++) {
@@ -56,36 +48,44 @@ public class GenericDemo {
         class Customer {
             int custid;
 
-            public boolean equals(Object obj) {
-                // this, obj
-                if (obj instanceof Customer) {
-                    Customer c = (Customer) obj;
-                    if (c.custid == this.custid)
-                        return true;
-                    else
-                        return false;
-                }
-                return false;
-            }
-
             public Customer(int custid) {
                 this.custid = custid;
+            }
+
+            @Override
+            public boolean equals(Object ob) {
+                // compare this and ob are equal or not
+                if (!(ob instanceof Customer)) {
+                    return false;
+                }
+                Customer c = (Customer) ob;
+                if (this.custid == c.custid)
+                    return true;
+                else
+                    return false;
             }
         }
         Customer[] customers = { new Customer(34), new Customer(445), new Customer(535), new Customer(304),
                 new Customer(444), new Customer(535) };
         Customer oneCustomer = new Customer(444);
         int posCustomer = search(customers, oneCustomer);
-        Customer first = new Customer(77);
-        Customer second = new Customer(77);
-        if (first == second)
-            System.out.println("same");
-        else
-            System.out.println("different");
-        if (first.equals(second))
-            System.out.println("same");
-        else
-            System.out.println("different");
         System.out.println(posCustomer);
+        int[] a = { 3, 4, 5, 6, 4, 3, 2, 1, 7, 8 };
+        int[] rev = reverse(a);
+        System.out.println(Arrays.toString(rev));
+        String[] names = { "Sachin", "akash", "rajan", "Harshit", "geeta", "Surekha" };
+        String join = String.join(",", names);
+        System.out.println(join);
+        Arrays.sort(names);
+        System.out.println(Arrays.toString(names));
+        String word = "Hello 87, =@#$ Good";
+        String replace = word.replaceAll("[^a-zA-Z0-9]", "");
+        System.out.println(replace);
+    }
+
+    public static int[] reverse(int[] a) {
+        int[] rev = new int[a.length];
+        // your logic
+        return rev;
     }
 }

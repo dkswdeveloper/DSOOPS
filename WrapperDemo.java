@@ -2,6 +2,13 @@
 // final
 // wrapper
 // generics
+// file handling 
+// serialization 
+// List
+// set 
+// comparator 
+// iterator and access order and insert order
+// map 
 class Base {
     int x;
     public Base(int x) {
@@ -29,9 +36,9 @@ final class Derived extends Base // if class is final, you can not extend it
         String fromSuper = super.toString();
         return fromSuper + " with " + y;
     }
-    // public void show(){ // no one can override because it is final
-    // System.out.println("Base with " + x);
-    // }
+    public void show(){ // no one can override because it is final
+    System.out.println("Base with " + x);
+    }
 }
 // class Derived2 extends Derived // final class can not be extended
 // {
@@ -40,8 +47,11 @@ public class WrapperDemo {
     public static void main(String[] args) {
         final int value = 5;
         // value++;
+        // value--;
+        // value = 10; 
         int x = 5;
         int a; // default value 0 in objects. here no default value
+        Integer intObj = new Integer(11);
         Integer y = 8; // default value of y is null
         String str = ""; // empty string
         String str2 = null; // length NullPointerException
@@ -61,11 +71,18 @@ public class WrapperDemo {
         x = y; // AUTO UNBOXING
         // AUTO BOXING
         // AUTO UNBOXING
+        String valStr= "459";
+        int valAsInt = Integer.parseInt(valStr);
+        // "000010111010100"
+        System.out.println("binary value " + Integer.parseInt("000010111010100", 2));
+        int oct = 0451;
         String octString = "0451";
-        int octValue = Integer.parseInt(octString, 16);
+
+        int octValue = Integer.parseInt(octString, 8);
         System.out.println(octValue);
         x = 1105;
         String hexString = Integer.toHexString(x);
+        System.out.println(Integer.toBinaryString(178));
         System.out.println(hexString);
         ch = 'a';
         System.out.println(Character.isAlphabetic(ch));

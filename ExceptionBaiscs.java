@@ -44,6 +44,15 @@ public class ExceptionBaiscs {
         }
     }
 
+    public int linearSearch2(int[] a, int x) throws Exception {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == x)
+                return i;
+        }
+        Exception e = new Exception("Element Not Found");
+        throw e;
+    }
+
     public int linearSearch(int[] a, int x) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] == x)
@@ -62,12 +71,14 @@ public class ExceptionBaiscs {
         Exception ex = new Exception();
         if (Math.random() < 0.5)
             throw ex;
-        if (Math.random() < 0.5) throw new NullPointerException();
-        if(Math.random() < 0.5) throw new InputMismatchException();
+        if (Math.random() < 0.5)
+            throw new NullPointerException();
+        if (Math.random() < 0.5)
+            throw new InputMismatchException();
     }
 
     // throws
-    public static void printFile(String fileName) throws FileNotFoundException, IOException {
+    public static void printFile(String fileName) throws FileNotFoundException, IOException{
         FileReader fr = new FileReader(fileName); // it throws
                                                   // FileNotFoundException
         Scanner sc = new Scanner(fr);
