@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 class Order {
     int orderno;
     double value;
@@ -39,10 +40,25 @@ public class StringSortChar {
         // Read a line from keyboard
         // Remove all characaters that are not small case alphabets
         // Sort the chacters in alpbabetically and Print it
-        // Input : 
+        // Input :
         // this is a line of 45 words ?
-        // Step 1 output : thisisalineofwords
+        // Step 1 output : thisixsalineofwords
         // Step 2 output : adefhiiilnoorssstw
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < line.length(); i++) {
+            char ch = line.charAt(i);
+            if (ch >= 'a' && ch <= 'z') {
+                sb.append(ch);
+            }
+        }
+        line = sb.toString();
+        line = line.replaceAll("[^a-z]", "");
+        char[] charAr = line.toCharArray();
+
+        Arrays.sort(charAr);
+        System.out.println(new String(charAr));
         // question 2
         // An array of n elements initialized with 0's
         // Read the operation number 1 for add and element to add and number of

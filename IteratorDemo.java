@@ -1,10 +1,31 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+class Student implements Iterable<Object> {
+    int roll;
+    String name;
+    String branch;
+    List<Object> list = new ArrayList<>();
+
+    public Student(int roll, String name, String branch) {
+        this.roll = roll;
+        this.name = name;
+        this.branch = branch;
+        list.add(roll);
+        list.add(name);
+        list.add(branch);
+    }
+
+    public Iterator<Object> iterator() {
+        return list.iterator();
+    }
+}
 class MyData implements Iterator<Integer>, Iterable<Integer> {
-    int[] items = new int[10];
-    int size = 0;
-    int current = 0;
+    private int[] items = new int[10];
+    private int size = 0;
+    private int current = 0;
 
     public void add(int x) {
         items[size] = x;
@@ -116,12 +137,8 @@ public class IteratorDemo {
         allOrders.complete(o4);
         allOrders.complete(o5);
         System.out.println("Next orders");
-        int breakpoint = 1;
-        int i = 0;
         for (Order o : allOrders) {
             System.out.println(o);
-            if (i >= breakpoint)
-                break;
         }
         MyData data = new MyData();
         data.add(1);
@@ -129,6 +146,47 @@ public class IteratorDemo {
         data.add(3);
         for (int x : data) {
             System.out.println(x);
+        }
+        Student s = new Student(234, "Amit", "CSE");
+        for (Object prop : s) { // Student to implement Iterable
+            System.out.println(prop);
+        }
+        Set<Integer> set = new HashSet<>();
+        set.add(23);
+        set.add(64);
+        set.add(88);
+        set.add(75);
+        Iterator<Integer> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        for (int x : set) {
+            System.out.println(x);
+        } // set implements Iterable
+        MyData d = new MyData();
+        d.add(4);
+        d.add(2);
+        d.add(0);
+        for (int x : d) {
+            System.out.println(x);
+        }
+    }
+}
+class Player {
+    String name;
+}
+class Team implements Iterable<Player> {
+    private List<Player> players = new ArrayList<>();
+
+    public Iterator<Player> iterator() {
+        return players.iterator();
+    }
+}
+class Demo {
+    {
+        Team team = new Team();
+        for (Player player : team) {
+            System.out.println(player);
         }
     }
 }
