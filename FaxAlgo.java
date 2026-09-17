@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.util.StringTokenizer;
 public class FaxAlgo {
     public static void main(String[] args) {
         // Write your code here
@@ -6,6 +8,10 @@ public class FaxAlgo {
         String ans = faxEncrypt(str);
         System.out.println(ans);
         System.out.println(faxDecrypt(ans));
+        StringTokenizer tokenizer = new StringTokenizer("a3bcd5e3a2", "[a-z]+", true);
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
+        }
     }
 
     public static String faxEncrypt(String str) {
@@ -33,7 +39,7 @@ public class FaxAlgo {
             int freq = 1;
             if (i < str.length() && Character.isDigit(str.charAt(i))) {
                 String freqStr = "";
-                while (i<str.length() && Character.isDigit(str.charAt(i))) {
+                while (i < str.length() && Character.isDigit(str.charAt(i))) {
                     freqStr = freqStr + str.charAt(i);
                     i++;
                 }

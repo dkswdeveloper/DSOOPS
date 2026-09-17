@@ -56,12 +56,10 @@ class MyData2 implements Iterable<Integer> {
 
     class IteratorImpl implements Iterator<Integer> {
         int current = 0;
-
         @Override
         public boolean hasNext() {
             return current < size;
         }
-
         @Override
         public Integer next() {
             return items[current];
@@ -133,6 +131,7 @@ public class IteratorDemo {
         allOrders.addOrder(o5);
         allOrders.addOrder(o6);
         allOrders.addOrder(o7);
+
         allOrders.complete(o2);
         allOrders.complete(o4);
         allOrders.complete(o5);
@@ -177,6 +176,8 @@ class Player {
 }
 class Team implements Iterable<Player> {
     private List<Player> players = new ArrayList<>();
+    String nameOfTeam;
+    String ownerOfTeam;
 
     public Iterator<Player> iterator() {
         return players.iterator();
