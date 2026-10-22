@@ -12,15 +12,50 @@ interface MyList {
     int size();
 }
 class MyArrayList implements MyList {
-// take an array and num as data and implement the functions
-// the array should automatically increase size when
-// new element is added
+    int[] a = new int[10];
+    int num = 0;
+    public void add(int x)
+    {
+        if(num == a.length)
+        {
+            a = Arrays.copyOf(a,num*2);
+        }
+        a[num] = x;
+        num++;
+    }
+    public void add(int index, int x)
+    {
+        // check index is in limits
+        if(index < 0 || index > num) 
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        // check there is space in array
+        if(num == a.length) { a = Arrays.copyOf(a,num*2);}
+        // shift elements from last to index : one step right
+        for(int i = num-1; i>=index; i--) 
+        {
+            a[i+1] = a[i];
+        }
+        // insert the element at index
+        a[index] = x;
+    }
+    @Override
+    public void remove(int index) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+    }
+    @Override
+    public int get(int index) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    }
+    @Override
+    public int size() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'size'");
+    }
 }
-// a = Arrays.copyOf(a, newLength);
-// a[]
-// int[] b = new int[a.length*2];
-// copy all elements
-// a = b;
 class MyListDemo {
     public static void main(String[] args) {
         int[] a = { 23, 4, 543, 5676, 98, 76, 56, 43, 5, 865, 4, 5 };
